@@ -75,4 +75,34 @@ return {
       )
     end,
   },
+
+  {
+    "olacin/telescope-gitmoji.nvim",
+    requires = { "nvim-telescope/telescope.nvim" },
+    config = function()
+      local telescope = require("telescope")
+      telescope.load_extension("gitmoji")
+
+      -- Custom layout configuration for Telescope Gitmoji
+      telescope.setup {
+        extensions = {
+          gitmoji = {
+            layout_strategy = "vertical",
+            layout_config = {
+              width = 0.8,
+              height = 0.8,
+              preview_cutoff = 10,
+              prompt_position = "bottom",
+            },
+            sorting_strategy = "ascending",
+            prompt_prefix = "🔍 ",
+            selection_caret = "➤ ",
+          }
+        }
+      }
+
+      -- Custom key mappings for Telescope Gitmoji
+      vim.api.nvim_set_keymap('n', '<leader>gm', '<cmd>gitmoji commit<cr>', { noremap = true, silent = true })
+    end,
+  },
 }
