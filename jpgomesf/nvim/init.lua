@@ -15,16 +15,5 @@ if not pcall(require, "lazy") then
   vim.cmd.quit()
 end
 
-vim.cmd [[
-  augroup TransparentBackground
-    autocmd!
-    autocmd ColorScheme * highlight Normal ctermbg=none guibg=none
-    autocmd ColorScheme * highlight NonText ctermbg=none guibg=none
-    autocmd ColorScheme * highlight LineNr ctermbg=none guibg=none
-    autocmd ColorScheme * highlight Folded ctermbg=none guibg=none
-    autocmd ColorScheme * highlight EndOfBuffer ctermbg=none guibg=none
-  augroup END
-]]
-
 require "lazy_setup"
 require "polish"

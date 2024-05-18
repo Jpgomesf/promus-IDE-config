@@ -1,5 +1,3 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- AstroUI provides the basis for configuring the AstroNvim User Interface
 -- Configuration documentation can be found with `:h astroui`
 -- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
@@ -7,31 +5,24 @@ if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 ---@type LazySpec
 return {
-  "AstroNvim/astroui",
-  ---@type AstroUIOpts
-  opts = {
-    -- change colorscheme
-    colorscheme = "astrodark",
-    -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
-    highlights = {
-      init = {
-      },
-    },
-    astrodark = {
-    },
-    -- Icons can be configured throughout the interface
-    icons = {
-      -- configure the loading of the lsp in the status line
-      LSPLoading1 = "⠋",
-      LSPLoading2 = "⠙",
-      LSPLoading3 = "⠹",
-      LSPLoading4 = "⠸",
-      LSPLoading5 = "⠼",
-      LSPLoading6 = "⠴",
-      LSPLoading7 = "⠦",
-      LSPLoading8 = "⠧",
-      LSPLoading9 = "⠇",
-      LSPLoading10 = "⠏",
+  {
+    "AstroNvim/astroui",
+    ---@type AstroUIOpts
+    opts = {
+      colorscheme = "one_monokai",  -- Set the colorscheme to 'one_monokai'
     },
   },
+  {
+    "cpea2506/one_monokai.nvim",  -- Include the One Monokai theme plugin
+    config = function()
+      -- Configure and activate the One Monokai theme with transparency
+      require("one_monokai").setup({
+        transparent = true,  -- Enable transparency
+        italics = true,      -- Enable italics
+        -- Additional configurations can be set here if needed
+      })
+      vim.cmd([[colorscheme one_monokai]])  -- Ensure to set the colorscheme after setup
+    end,
+  },
 }
+
